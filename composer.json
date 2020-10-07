@@ -1,0 +1,33 @@
+{
+    "name": "ttbooking/money-serializer",
+    "description": "MoneyPHP serialization interface and implementations",
+    "type": "library",
+    "keywords": ["money", "serialization"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/ttbooking/money-serializer/issues",
+        "source": "https://github.com/ttbooking/money-serializer"
+    },
+    "authors": [
+        {
+            "name": "Sergey Danilchenko",
+            "email": "s.danilchenko@ttbooking.ru"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "ext-json": "*",
+        "moneyphp/money": "^3.2",
+        "ttbooking/safe-money-parser": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TTBooking\\MoneySerializer\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
