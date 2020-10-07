@@ -9,22 +9,19 @@ use Money\Currency;
 use Money\Money;
 use TTBooking\MoneySerializer\Contracts\SerializesMoney;
 
-class JsonMoneySerializer implements SerializesMoney
+class SimpleMoneySerializer implements SerializesMoney
 {
     public function serialize(Money $money): string
     {
-        return json_encode($money);
+        return $money->getAmount();
     }
 
     public function deserialize(string $serialized, Currency $fallbackCurrency = null): Money
     {
-        $value = json_decode($serialized);
-        $currency = $value->currency ? new Currency($value->currency) : $fallbackCurrency;
-
-        if (is_null($currency)) {
+        if (is_null($fallbackCurrency)) {
             throw new InvalidArgumentException('Fallback currency requested, but not provided.');
         }
 
-        return new Money($value->amount, $currency);
+        return new Money($serialized, $fallbackCurrency);
     }
 }
