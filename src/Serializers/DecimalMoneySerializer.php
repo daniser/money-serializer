@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace TTBooking\MoneySerializer\Serializers;
 
-use Money\Currencies\ISOCurrencies;
+use Money\Currencies;
 use Money\Formatter\DecimalMoneyFormatter;
 use Money\Parser\DecimalMoneyParser;
 
 class DecimalMoneySerializer extends MoneySerializer
 {
-    public function __construct()
+    public function __construct(Currencies $currencies)
     {
-        $currencies = new ISOCurrencies;
         $formatter = new DecimalMoneyFormatter($currencies);
         $parser = new DecimalMoneyParser($currencies);
 
